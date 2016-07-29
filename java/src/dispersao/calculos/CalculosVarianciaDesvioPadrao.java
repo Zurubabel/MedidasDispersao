@@ -54,5 +54,26 @@ public class CalculosVarianciaDesvioPadrao {
 		System.out.println("O desvio padrão é " + desvioPadrao);
 	}
 	
+	public double calcularVarianciaAmostragem(int[] numeros) {
+		// Calcular a média
+		float media = retornarMedia(numeros);
+		float somaNumeros = 0.0f;
+		for (int i = 0; i < numeros.length; i++) {
+			somaNumeros += Math.pow(media - numeros[i], 2);
+		}
+		double resultado = somaNumeros / (numeros.length -1);
+		
+		System.out.println("A variância da amostragem dos dados é: " + resultado);
+		
+		return resultado;
+	}
+	
+	public void calcularDesvioPadraoAmostragem(int[] numeros) {
+		double variancia = this.calcularVarianciaAmostragem(numeros);
+		
+		double desvioPadrao = Math.sqrt(variancia);
+		
+		System.out.println("O desvio padrão da amostragem é " + desvioPadrao);
+	}
 	
 }
