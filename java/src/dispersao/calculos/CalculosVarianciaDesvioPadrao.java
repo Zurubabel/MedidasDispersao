@@ -30,6 +30,19 @@ public class CalculosVarianciaDesvioPadrao {
 		float resultado = somaNumeros / numeros.length;
 		
 		System.out.println("A variância dos dados é: " + resultado);
+	}
+	
+	public void calcularVariancia2(int[] numeros) {
+		// Fórmula 2 - (E(x²) / n) - u²
+		float media = retornarMedia(numeros);
+		double somaNumeros = 0.0f;
+		for (int i = 0; i < numeros.length; i++) {
+			somaNumeros += Math.pow(numeros[i], 2);
+		}
+		double resultado = (somaNumeros / numeros.length) - Math.pow(media, 2);
+		
+		System.out.println("(Cálculo Variância 2) A variância dos dados é: " + resultado);
+		
 		
 	}
 	
