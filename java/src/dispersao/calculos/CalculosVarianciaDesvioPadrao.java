@@ -32,7 +32,7 @@ public class CalculosVarianciaDesvioPadrao {
 		System.out.println("A variância dos dados é: " + resultado);
 	}
 	
-	public void calcularVariancia2(int[] numeros) {
+	public double calcularVariancia2(int[] numeros) {
 		// Fórmula 2 - (E(x²) / n) - u²
 		float media = retornarMedia(numeros);
 		double somaNumeros = 0.0f;
@@ -43,7 +43,15 @@ public class CalculosVarianciaDesvioPadrao {
 		
 		System.out.println("(Cálculo Variância 2) A variância dos dados é: " + resultado);
 		
+		return resultado;
+	}
+	
+	public void calcularDesvioPadrao(int[] numeros) {
+		double variancia = this.calcularVariancia2(numeros);
 		
+		double desvioPadrao = Math.sqrt(variancia);
+		
+		System.out.println("O desvio padrão é " + desvioPadrao);
 	}
 	
 	
