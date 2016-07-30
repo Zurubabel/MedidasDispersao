@@ -38,10 +38,12 @@ public class MedidasDispersao {
 		
 		calculosDispersao.exibirAlcanceArray(numerosArray);*/
 		
-		CalculosVarianciaDesvioPadrao vdp = new CalculosVarianciaDesvioPadrao();
+		CalculosVarianciaDesvioPadrao vdpAmostragem = new CalculosVarianciaDesvioPadrao(numerosArray, true);
 		//vdp.calcularVariancia(numerosArray);
 		//vdp.calcularVariancia2(numerosArray);
-		vdp.calcularDesvioPadraoAmostragem(numerosArray);
+		vdpAmostragem.calcularDesvioPadrao();
+		vdpAmostragem.calcularPorTotal();
+		vdpAmostragem.calcularDesvioPadrao();
 		
 		
 
