@@ -7,6 +7,7 @@ public class CalculosVarianciaDesvioPadrao {
 	// Fórmula 1 - E(u - x)² / n
 	// Fórmula 2 - (E(x²) / n) - u²
 	// Coeficiente de Variação - Desvio padrão / média (x 100 para apresentar a porcentagem) 
+	// Teste Z - (valor - u) / DP
 	
 	// x => Números
 	// u => Média
@@ -31,6 +32,20 @@ public class CalculosVarianciaDesvioPadrao {
 		calcularVariancia();
 		calcularDesvioPadrao();
 		calcularCoeficienteVariacao();
+	}
+	
+	public void calcularTesteZ(int numeroTeste) {
+		// Teste Z - (valor - u) / DP
+		if (numeroTeste <= 0 || numeroTeste > numeros.length) {
+			System.out.println("Número inválido. Digite do 1 ao " + numeros.length);
+			return;
+		}
+		int numeroSelecionado = numeros[numeroTeste - 1];
+		double resultadoTesteZ = (numeroSelecionado - this.media) / this.desvioPadrao;
+		
+		System.out.println("O teste Z do número " + numeroSelecionado +" é " + resultadoTesteZ);
+		
+		
 	}
 	
 	public void retornarSumario() {
