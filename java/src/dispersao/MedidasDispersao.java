@@ -1,9 +1,5 @@
 package dispersao;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import dispersao.calculos.CalculosAlcance;
 import dispersao.calculos.CalculosVarianciaDesvioPadrao;
 
 public class MedidasDispersao {
@@ -44,6 +40,7 @@ public class MedidasDispersao {
 		vdpAmostragem.calcularDesvioPadrao();
 		vdpAmostragem.calcularPorTotal();
 		vdpAmostragem.calcularDesvioPadrao();
+		vdpAmostragem.calcularCoeficienteVariacao();
 		
 		
 

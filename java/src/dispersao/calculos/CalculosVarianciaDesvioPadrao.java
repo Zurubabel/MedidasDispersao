@@ -6,6 +6,7 @@ public class CalculosVarianciaDesvioPadrao {
 	
 	// Fórmula 1 - E(u - x)² / n
 	// Fórmula 2 - (E(x²) / n) - u²
+	// Coeficiente de Variação - Desvio padrão / média (x 100 para apresentar a porcentagem) 
 	
 	// x => Números
 	// u => Média
@@ -13,10 +14,12 @@ public class CalculosVarianciaDesvioPadrao {
 	
 	private boolean amostragem;
 	private int[] numeros;
+	private float media;
 	
 	public CalculosVarianciaDesvioPadrao(int[] numeros, boolean amostragem) {
 		this.numeros = numeros;
 		this.amostragem = amostragem;
+		calcularMedia();
 		if (amostragem == true) {
 			// Amostragem
 			System.out.println("Amostragem:");
@@ -26,19 +29,18 @@ public class CalculosVarianciaDesvioPadrao {
 		}
 	}
 	
-	private float retornarMedia() {
+	private void calcularMedia() {
 		// Calcular a média
 		float somaTotal = 0;
 		for (int i = 0; i < numeros.length; i++) {
 			somaTotal += numeros[i];
 		}
 		System.out.println("Média " + (somaTotal / numeros.length));
-		return somaTotal / numeros.length;
+		this.media = somaTotal / numeros.length;
 	}
 	 
 	public double calcularVariancia() {
 		// Calcular a média
-		float media = retornarMedia();
 		float somaNumeros = 0.0f;
 		for (int i = 0; i < numeros.length; i++) {
 			somaNumeros += Math.pow(media - numeros[i], 2);
@@ -60,7 +62,6 @@ public class CalculosVarianciaDesvioPadrao {
 	
 	public double calcularVariancia2() {
 		// Fórmula 2 - (E(x²) / n) - u²
-		float media = retornarMedia();
 		double somaNumeros = 0.0f;
 		for (int i = 0; i < numeros.length; i++) {
 			somaNumeros += Math.pow(numeros[i], 2);
@@ -72,13 +73,21 @@ public class CalculosVarianciaDesvioPadrao {
 		return resultado;
 	}
 	
-	public void calcularDesvioPadrao() {
+	public double calcularDesvioPadrao() {
 		double variancia = this.calcularVariancia();
-		
 		double desvioPadrao = Math.sqrt(variancia);
 		
 		System.out.println("O desvio padrão é " + desvioPadrao);
+		
+		return desvioPadrao;
 	}
+	
+	public void calcularCoeficienteVariacao() {
+		// Coeficiente de Variação - Desvio padrão / média (x 100 para apresentar a porcentagem)
+		double coeficienteVariacao = this.calcularDesvioPadrao() / this.media;
+		System.out.println("O coeficiente de variação é : " + coeficienteVariacao);
+	}
+	
 	
 	public void calcularPorAmostragem() {
 		System.out.println("Agora calculando por Amostragem:");
