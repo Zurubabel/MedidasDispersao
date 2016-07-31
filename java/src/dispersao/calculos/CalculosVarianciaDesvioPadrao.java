@@ -44,8 +44,6 @@ public class CalculosVarianciaDesvioPadrao {
 		double resultadoTesteZ = (numeroSelecionado - this.media) / this.desvioPadrao;
 		
 		System.out.println("O teste Z do número " + numeroSelecionado +" é " + resultadoTesteZ);
-		
-		
 	}
 	
 	public void retornarSumario() {
