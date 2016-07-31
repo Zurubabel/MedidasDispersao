@@ -15,18 +15,40 @@ public class CalculosVarianciaDesvioPadrao {
 	private boolean amostragem;
 	private int[] numeros;
 	private float media;
+	private double variancia;
+	private double desvioPadrao;
+	private double coeficienteVariacao;
 	
 	public CalculosVarianciaDesvioPadrao(int[] numeros, boolean amostragem) {
 		this.numeros = numeros;
 		this.amostragem = amostragem;
+		calculoGeral();
+	}
+	
+	private void calculoGeral() {
+		// Calcular todas as funções e gravar nas variáveis
 		calcularMedia();
-		if (amostragem == true) {
-			// Amostragem
-			System.out.println("Amostragem:");
+		calcularVariancia();
+		calcularDesvioPadrao();
+		calcularCoeficienteVariacao();
+	}
+	
+	public void retornarSumario() {
+		if (isAmostragem()) {
+			System.out.println("Calculando por amostragem");
 		} else {
-			// Total
-			System.out.println("Total:");
+			System.out.println("Calculando por total");
 		}
+		
+		System.out.println("Média : " + this.media);
+		System.out.println("Variância : " + this.variancia);
+		System.out.println("Desvio Padrão : " + this.desvioPadrao);
+		System.out.println("Coeficiente de Variação : " + this.coeficienteVariacao);
+	}
+	
+	public void instanciarNovosNumeros(int[] numeros) {
+		this.numeros = numeros;
+		calculoGeral();
 	}
 	
 	private void calcularMedia() {
@@ -35,11 +57,10 @@ public class CalculosVarianciaDesvioPadrao {
 		for (int i = 0; i < numeros.length; i++) {
 			somaTotal += numeros[i];
 		}
-		System.out.println("Média " + (somaTotal / numeros.length));
 		this.media = somaTotal / numeros.length;
 	}
 	 
-	public double calcularVariancia() {
+	public void calcularVariancia() {
 		// Calcular a média
 		float somaNumeros = 0.0f;
 		for (int i = 0; i < numeros.length; i++) {
@@ -56,8 +77,7 @@ public class CalculosVarianciaDesvioPadrao {
 			resultado = somaNumeros / numeros.length;
 		}
 		
-		System.out.println("A variância dos dados é: " + resultado);
-		return resultado;
+		this.variancia = resultado;
 	}
 	
 	public double calcularVariancia2() {
@@ -66,37 +86,53 @@ public class CalculosVarianciaDesvioPadrao {
 		for (int i = 0; i < numeros.length; i++) {
 			somaNumeros += Math.pow(numeros[i], 2);
 		}
-		double resultado = (somaNumeros / numeros.length) - Math.pow(media, 2);
-		
-		System.out.println("(Cálculo Variância 2) A variância dos dados é: " + resultado);
-		
+		double resultado = (somaNumeros / numeros.length) - Math.pow(media, 2);		
 		return resultado;
 	}
 	
-	public double calcularDesvioPadrao() {
-		double variancia = this.calcularVariancia();
-		double desvioPadrao = Math.sqrt(variancia);
-		
-		System.out.println("O desvio padrão é " + desvioPadrao);
-		
-		return desvioPadrao;
+	public void calcularDesvioPadrao() {
+		this.desvioPadrao = Math.sqrt(this.variancia);
 	}
 	
 	public void calcularCoeficienteVariacao() {
 		// Coeficiente de Variação - Desvio padrão / média (x 100 para apresentar a porcentagem)
-		double coeficienteVariacao = this.calcularDesvioPadrao() / this.media;
-		System.out.println("O coeficiente de variação é : " + coeficienteVariacao);
+		this.coeficienteVariacao = this.desvioPadrao / this.media;
 	}
 	
 	
 	public void calcularPorAmostragem() {
-		System.out.println("Agora calculando por Amostragem:");
-		this.amostragem = true;
+		if (!isAmostragem()) {
+			this.amostragem = true;
+			calculoGeral();
+		}
 	}
 	
 	public void calcularPorTotal() {
-		System.out.println("Agora calculando por Total:");
-		this.amostragem = false;
+		if (isAmostragem()) {
+			this.amostragem = false;
+			calculoGeral();
+		}
 	}
+	
+	public double getCoeficienteVariacao() {
+		return this.coeficienteVariacao;
+	}
+	
+	public boolean isAmostragem() {
+		return amostragem;
+	}
+
+	public float getMedia() {
+		return media;
+	}
+
+	public double getVariancia() {
+		return variancia;
+	}
+
+	public double getDesvioPadrao() {
+		return desvioPadrao;
+	}
+
 	
 }

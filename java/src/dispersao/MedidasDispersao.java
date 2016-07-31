@@ -8,40 +8,15 @@ public class MedidasDispersao {
 	
 	public static void main(String[] args) {
 		int[] numerosArray = {1,2,3,4,5,6};
-		/*List<Integer> numerosLista = new ArrayList<>();
 		
-		numerosLista.add(1);
-		numerosLista.add(1);
-		numerosLista.add(2);
-		numerosLista.add(2);
-		numerosLista.add(2);
-		numerosLista.add(3);
-		numerosLista.add(3);
-		numerosLista.add(3);
-		numerosLista.add(3);
-		numerosLista.add(4);
-		numerosLista.add(4);
-		numerosLista.add(4);
-		numerosLista.add(5);
-		numerosLista.add(5);
-		
-		CalculosAlcance calculosDispersao = new CalculosAlcance();
-		
-		calculosDispersao.exibirAlcanceLista(numerosLista);
-		
-		// ----------------------
-		
-		
-		calculosDispersao.exibirAlcanceArray(numerosArray);*/
-		
-		CalculosVarianciaDesvioPadrao vdpAmostragem = new CalculosVarianciaDesvioPadrao(numerosArray, true);
-		//vdp.calcularVariancia(numerosArray);
-		//vdp.calcularVariancia2(numerosArray);
-		vdpAmostragem.calcularDesvioPadrao();
-		vdpAmostragem.calcularPorTotal();
-		vdpAmostragem.calcularDesvioPadrao();
-		vdpAmostragem.calcularCoeficienteVariacao();
-		
+		CalculosVarianciaDesvioPadrao vdp = new CalculosVarianciaDesvioPadrao(numerosArray, false);
+		vdp.retornarSumario();
+		vdp.calcularPorAmostragem();
+		System.out.println("\n\n");
+		vdp.retornarSumario();
+		System.out.println("\n\n");
+		vdp.calcularPorTotal();
+		vdp.retornarSumario();
 		
 
 	}
