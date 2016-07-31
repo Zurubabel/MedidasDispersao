@@ -7,7 +7,7 @@ public class MedidasDispersao {
 	// GITHUB - https://github.com/Zurubabel/MedidasDispersao
 	
 	public static void main(String[] args) {
-		int[] numerosArray = {1,2,3,4,5,6,7,8,9,10};
+		int[] numerosArray = {1,2,3,4,5,6};
 		
 		CalculosVarianciaDesvioPadrao vdp = new CalculosVarianciaDesvioPadrao(numerosArray, false);
 		vdp.retornarSumario();

@@ -5,11 +5,12 @@
 	// https://github.com/Zurubabel/MedidasDispersao/tree/master/php
 	if (isset($_POST["numeros"])) {
 		
-		$medidasDispersao = new MedidasDispersao();
-		$medidasDispersao->setNumeros($_POST["numeros"]);
+		$medidasDispersao = new MedidasDispersao($_POST["numeros"], false);
+		//$medidasDispersao->setNumeros($_POST["numeros"]);
 		$medidasDispersao->calcularMedia();
-		
-		echo "Média : " . $medidasDispersao->getMedia();
+		$medidasDispersao->calcularVariancia();
+		echo "Média : " . $medidasDispersao->getMedia() . "<br />";
+		echo "Variancia : " . $medidasDispersao->getVariancia() . "<br / >";
 		
 		
 	}
