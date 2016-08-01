@@ -3,7 +3,7 @@
 	class MedidasDispersao {
 		
 		// Média - OK
-		// Variancia (Total ou Amostra) - E(u - x)² / n (Total) ou E(u - x)² / (n - 1) (amostragem)
+		// Variancia (Total ou Amostra) - E(u - x)² / n (Total) ou E(u - x)² / (n - 1) (amostragem) ok
 		// Desvio Padrão
 		// Coeficiênte de Variação
 		// Teste Z
@@ -12,9 +12,19 @@
 		private $bAmostragem;
 		private $fMedia;
 		private $fVariancia;
+		private $fDesvioPadrao;
 		
 		public function MedidasDispersao($textoNumeros, $bAmostragem = true) {
 			$this->arrNumeros = explode(" ", $textoNumeros);
+			$this->bAmostragem = $bAmostragem;
+			
+			$this->calcularGeral();
+		}
+		
+		public function calcularGeral() {
+			$this->calcularMedia();
+			$this->calcularVariancia();
+			$this->calcularDesvioPadrao();
 		}
 		
 		public function calcularVariancia() {
@@ -34,6 +44,10 @@
 			$this->fVariancia = $iSomaTotal / $iQuantidadeDivisao;			
 		}
 		
+		public function calcularDesvioPadrao() {
+			$this->fDesvioPadrao = sqrt($this->fVariancia);
+		}
+		
 		public function calcularMedia() {
 			// Média = Total Números / quantidade
 			$quantidadeArrayNumeros = count($this->arrNumeros);
@@ -46,6 +60,9 @@
 			$this->fMedia = $totalSomaNumeros / $quantidadeArrayNumeros;
 		}
 		
+		public function getDesvioPadrao() {
+			return $this->fDesvioPadrao;
+		}
 		
 		public function getMedia() {
 			return $this->fMedia;

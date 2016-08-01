@@ -9,7 +9,7 @@ public class MedidasDispersao {
 	public static void main(String[] args) {
 		int[] numerosArray = {1,2,3,4,5,6};
 		
-		CalculosVarianciaDesvioPadrao vdp = new CalculosVarianciaDesvioPadrao(numerosArray, false);
+		CalculosVarianciaDesvioPadrao vdp = new CalculosVarianciaDesvioPadrao(numerosArray, true);
 		vdp.retornarSumario();
 		vdp.calcularTesteZ(3);
 		
