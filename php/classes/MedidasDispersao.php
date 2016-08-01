@@ -4,15 +4,16 @@
 		
 		// Média - OK
 		// Variancia (Total ou Amostra) - E(u - x)² / n (Total) ou E(u - x)² / (n - 1) (amostragem) ok
-		// Desvio Padrão
-		// Coeficiênte de Variação
-		// Teste Z
+		// Desvio Padrão ok
+		// Coeficiente de Variação - Desvio padrão / média (x 100 para apresentar a porcentagem)
+		// Teste Z - (valor - u) / DP
 		
 		private $arrNumeros;
 		private $bAmostragem;
 		private $fMedia;
 		private $fVariancia;
 		private $fDesvioPadrao;
+		private $fCoeficienteVariacao;
 		
 		public function MedidasDispersao($textoNumeros, $bAmostragem = true) {
 			$this->arrNumeros = explode(" ", $textoNumeros);
@@ -25,6 +26,18 @@
 			$this->calcularMedia();
 			$this->calcularVariancia();
 			$this->calcularDesvioPadrao();
+			$this->calcularCoeficienteVariacao();
+		}
+		
+		public function fRetornarTesteZ($index) {
+			if ($index <= 0 || $index > count($this->arrNumeros)) {
+				throw new Exception("Digite um número de 0 a " . count($this->arrNumeros));
+			}
+			return ($this->arrNumeros[$index - 1] - $this->fMedia) / $this->fDesvioPadrao;
+		}
+		
+		public function calcularCoeficienteVariacao() {
+			$this->fCoeficienteVariacao = $this->fDesvioPadrao / $this->fMedia;
 		}
 		
 		public function calcularVariancia() {
@@ -72,8 +85,14 @@
 			return $this->fVariancia;
 		}
 		
+		public function getCoeficienteVariacao() {
+			return $this->fCoeficienteVariacao;
+		}
+		
 		public function setNumeros($numeros) {
 			$this->arrNumeros = explode(" ", $numeros);
 		}
+		
+		
 		
 	}

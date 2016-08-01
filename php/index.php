@@ -11,7 +11,15 @@
 		echo "Média : " . $medidasDispersao->getMedia() . "<br />";
 		echo "Variancia : " . $medidasDispersao->getVariancia() . "<br / >";
 		echo "Desvio Padrão : " . $medidasDispersao->getDesvioPadrao() . "<br / >";
-		
+		echo "Coeficiente de Variação : " . $medidasDispersao->getCoeficienteVariacao() . "<br / >";
+		try {
+			echo "O teste Z do número é " . $medidasDispersao->fRetornarTesteZ(-1) . "</br>";
+		} catch (Exception $e) {
+			echo "----***----<br />";
+			echo "ERRO!<BR />";
+			echo $e->getMessage();
+			echo "<br />----***----<br />";
+		}
 		
 	}
 ?>
